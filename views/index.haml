@@ -1,0 +1,20 @@
+%html
+  %head
+    %link{:rel => "stylesheet", :href => "/styles.css", :type => "text/css", :media => "all"}
+    %title MyPage: Leon
+  %body
+
+    %h1 MyPage: Leon
+    %p Likes where orange goggles...
+
+    -unless Comment.all.empty?
+      %h2 Comments:
+      %ol
+        -Comment.all.each do |comment|
+          %li #{comment.text}
+    %form{:action => '/mypage/comments', :method=>:post}
+      %textarea{:name => 'comment'}
+      %br
+      %input{:type => 'submit', :value => 'comment'}
+
+
